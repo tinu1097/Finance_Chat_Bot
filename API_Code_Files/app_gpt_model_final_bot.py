@@ -10,7 +10,7 @@ company_names = [
     "DMCC Speciality Chemicals Ltd", "Gajra Bevel Gears Ltd", "Harrisons Malayalam Ltd",
     "Linde India Ltd", "Kesoram Industries Ltd", "Milkfood Ltd", "Pfizer Ltd"
 ]
-
+print("companies")
 
 # OpenAI API key configuration
 openai.api_key = "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"
