@@ -41,18 +41,16 @@ function App() {
 
       if (modelPreference === "GPT_Model" || modelPreference === "Both") {
         try {
-          const gptResponse = await fetch(
-            `http://127.0.0.1:5000/get_company_info`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ user_query: input }),
-            }
-          );
+          const gptResponse = await fetch(`http://127.0.0.1:5000/get_company_info`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query: input }), // Corrected to match the Flask API's expected key
+          });
           const gptData = await gptResponse.json();
+          console.log("Error",gptData)
           gptMessage = {
             sender: "GPT_Model",
-            text: gptData.response || "No response",
+            text: gptData.answer || "No response",
           };
         } catch {
           gptMessage = {
@@ -64,24 +62,29 @@ function App() {
 
       try {
         const customResponse = await fetch(
-          `http://127.0.0.1:8000/ask-finance-question`,
+          `http://127.0.0.1:5000/ask_questions`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question: input }),
+            body: JSON.stringify({ question: input }), // input is the question
           }
         );
+    
         const customData = await customResponse.json();
-        customMessage = {
+    
+        // The correct key is "answer" based on your Flask API
+        const customMessage = {
           sender: "Custom_Model",
-          text: customData.response || "No response",
+          text: customData.answer || "No response", // Access 'answer' here
         };
-      } catch {
-        customMessage = {
+    } catch (error) {
+        const customMessage = {
           sender: "Custom_Model",
           text: "Error from Custom_Model API",
         };
-      }
+        console.error(error); // Log the error for debugging
+    }
+    
 
       // Update messages based on selected model
       const newMessages = [
