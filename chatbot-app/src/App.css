@@ -1,0 +1,215 @@
+.App {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar .clear-chat-btn,
+.sidebar .add-chat-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar .clear-chat-btn:hover {
+  background-color: #d32f2f;
+}
+
+.sidebar .add-chat-btn:hover {
+  background-color: #388e3c;
+}
+
+.chat-list {
+  margin-top: 20px;
+  overflow-y: auto;
+  flex-grow: 1;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+}
+
+.chat-item {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.chat-item:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.chat-item.active {
+  background-color: #1b5e20;
+  color: white;
+}
+
+.chat-item span {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.delete-chat-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-chat-btn:hover {
+  background-color: #d32f2f;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #f4f4f4;
+}
+
+.chat-window {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.message.User {
+  font-weight: bold;
+  color: #007bff;
+  background-color: #d9f7d9;
+}
+
+.message.Bot {
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.message.GPT_Model {
+  background-color: #e0f7fa;
+}
+
+.message.Custom_Model {
+  background-color: #ffe0b2;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #f4f4f4;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.input-box {
+  flex-grow: 1;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.input-box:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.send-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-btn:hover {
+  background-color: #45a049;
+}
+
+.dual-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.dual-view-column {
+  width: 45%;
+  height: 70%; /* Centered in the screen */
+  padding: 15px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.dual-view-column h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .dual-view-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dual-view-column {
+    width: 100%;
+  }
+}
