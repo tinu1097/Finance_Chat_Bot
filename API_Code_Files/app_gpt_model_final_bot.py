@@ -250,4 +250,4 @@ def get_company_info():
         return jsonify({"error": "Failed to retrieve response from GPT API"})
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5001)

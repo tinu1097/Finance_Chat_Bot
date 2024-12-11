@@ -297,7 +297,7 @@ function App() {
       // Fetch response from GPT_Model if selected
       if (modelPreference === "GPT_Model" || modelPreference === "Both") {
         try {
-          const gptResponse = await fetch("http://192.168.1.22:5000/get_company_info", {
+          const gptResponse = await fetch("http://127.0.0.1:5001/get_company_info", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ query: input }),
@@ -319,7 +319,7 @@ function App() {
       // Fetch response from Custom_Model if selected
       if (modelPreference === "Custom_Model" || modelPreference === "Both") {
         try {
-          const customResponse = await fetch("http://127.0.0.1:5000/ask_questions", {
+          const customResponse = await fetch("http://127.0.0.1:5002/query", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ question: input }),
